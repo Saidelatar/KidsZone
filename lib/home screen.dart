@@ -35,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Container(),
                 Center(
                   child: SizedBox(
                     height: 500,
