@@ -74,7 +74,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
                   'KidsZone is an innovative educational application that utilizes artificial intelligence to teach children writing skills in a fun and interactive way.',
                   textAlign: TextAlign.left,
                   style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w500),
+                      fontFamily: 'Codec Pro Bold',
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600),
                 ),
               ],
             ),
