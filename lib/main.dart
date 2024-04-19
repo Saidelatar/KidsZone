@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kids_zone/features/presentation/splash/views/splash_view.dart';
 
 void main() {
   runApp(const KidsZone());
@@ -10,7 +11,8 @@ class KidsZone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(),
+      debugShowCheckedModeBanner: false,
+      home: SplashView(),
     );
   }
 }
