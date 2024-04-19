@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kids_zone/features/presentation/splash/views/widgets/image_slider.dart';
+import 'package:kids_zone/features/presentation/splash/views/widgets/text_slider.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -10,11 +12,19 @@ class SplashViewBody extends StatefulWidget {
 class _SplashViewBodyState extends State<SplashViewBody>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
+  late Animation<Offset> sliderImageAnimation;
+  late Animation<Offset> sliderTextAnimation;
 
   void initState() {
     animationController =
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
     animationController.forward();
+    sliderImageAnimation =
+        Tween<Offset>(begin: const Offset(2, 0), end: Offset.zero)
+            .animate(animationController);
+    sliderTextAnimation =
+        Tween<Offset>(begin: const Offset(2, 0), end: Offset.zero)
+            .animate(animationController);
   }
 
   @override
@@ -33,33 +43,10 @@ class _SplashViewBodyState extends State<SplashViewBody>
             top: MediaQuery.of(context).size.height * 0.15,
             left: MediaQuery.of(context).size.width * 0.2,
           ),
-          child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.6, //370
-              height: MediaQuery.of(context).size.height * 0.8, //600,
-              child: Image.asset('assets/images/boy .png', fit: BoxFit.cover)),
+          child:
+              SliderImageAnimation(sliderImageAnimation: sliderImageAnimation),
         ),
-        const Padding(
-          padding: EdgeInsets.only(top: 80, left: 20),
-          child: Column(
-            children: [
-              Text(
-                'KidsZone',
-                style: TextStyle(
-                    fontSize: 42,
-                    color: Colors.white,
-                    fontFamily: 'Codec Pro Bold',
-                    fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'Where Learning Meets Innovation.',
-                style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500),
-              ),
-            ],
-          ),
-        ),
+        SliderTextAnimation(sliderTextAnimation: sliderTextAnimation),
         Positioned(
           left: 20,
           bottom: 5,
@@ -74,7 +61,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
                   'KidsZone is an innovative educational application that utilizes artificial intelligence to teach children writing skills in a fun and interactive way.',
                   textAlign: TextAlign.left,
                   style: TextStyle(
-                      fontFamily: 'Codec Pro Bold',
+                      // fontFamily: 'Codec Pro Bold',
                       color: Colors.white,
                       fontWeight: FontWeight.w600),
                 ),
